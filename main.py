@@ -1,5 +1,5 @@
 import unittest
-import page, time
+import page
 
 from selenium import webdriver
 
@@ -12,15 +12,15 @@ class ESPOL_career(unittest.TestCase):
     def setUp(self):
          self.driver = webdriver.Chrome(path)
          self.driver.get(url_page)
+         self.driver.maximize_window()
         
 
     def test_store_careers(self):
         main_page = page.MainPage(self.driver)
         assert main_page.is_load(), "Page of careers wasn't found"
         main_page.get_faculty()
-        time.sleep(3)
-        main_page.get_career_by_fac("ING")
-        
+        main_page.get_career_by_fac("INGLES")
+        main_page.write_file()
 
         
     def tearDown(self):
