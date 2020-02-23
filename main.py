@@ -1,5 +1,5 @@
 import unittest
-import page
+import page, time
 
 from selenium import webdriver
 
@@ -18,6 +18,9 @@ class ESPOL_career(unittest.TestCase):
         main_page = page.MainPage(self.driver)
         assert main_page.is_load(), "Page of careers wasn't found"
         main_page.get_faculty()
+        time.sleep(3)
+        main_page.get_career_by_fac("ING")
+        
 
         
     def tearDown(self):
